@@ -2,6 +2,7 @@ const express = require("express");
 const path = require("path");
 const mongoose = require("mongoose");
 const methodOverride = require("method-override");
+const ejsMate = require("ejs-mate");
 const Yodogers = require("./models/yoDogers");
 
 mongoose
@@ -15,7 +16,8 @@ mongoose
   });
 
 const app = express();
-
+//one of many engines that help run and parse ejs
+app.engine("ejs", ejsMate);
 //ejs setup
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
@@ -70,6 +72,13 @@ app.put("/yodogers/:userId", async (req, res) => {
     receivedYodogerObject
   );
   res.redirect(`/yodogers/${updatedYodoger._id}`);
+});
+
+//delete Yodoger
+app.delete("/yodogers/:userId", async (req, res) => {
+  const id = req.params.userId;
+  await Yodogers.findByIdAndDelete(id);
+  res.redirect("/yodogers");
 });
 
 app.listen(3000, () => {

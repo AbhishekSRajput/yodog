@@ -1,20 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Yodogers</title>
-  </head>
-  <body>
-    <h1>All Yodogers</h1>
-    <a href="/yodogers/new">Add a yodoger</a>
-    <ul>
-      <% for (let yodoger of yodogers) { %>
-      <li>
-        <a href="/yodogers/<%= yodoger._id %> "><%= yodoger.title %></a>
-      </li>
-      <% } %>
-    </ul>
-  </body>
-</html>
+<% layout('layouts/boilerplate') %>
+
+<div class="m-3">
+  <h1>All Yodogers</h1>
+  <div>
+    <button class="btn btn-primary m-3">
+      <a class="text-light" href="/yodogers/new">Add Yodoger</a>
+    </button>
+  </div>
+  <% for (let yodoger of yodogers){%>
+  <div class="card" mb-3>
+    <div class="row">
+      <div class="col-md-4">
+        <img class="img-fluid" alt="" src="<%=yodoger.image%>" />
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title"><%= yodoger.title %></h5>
+          <p class="card-text"><%= yodoger.description %></p>
+          <p class="card-text">
+            <small class="text-muted"><%= yodoger.location%></small>
+          </p>
+          <a class="btn btn-info" href="/yodogers/<%=yodoger._id%>"
+            >View Yodoger<%=yodoger.title%></a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+  <% }%>
+</div>
