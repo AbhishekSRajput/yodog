@@ -3,7 +3,7 @@
 <div class="row">
   <h1 class="text-center">New Yodoger</h1>
   <div class="col-6 offset-3">
-    <form action="/yodogers" method="POST">
+    <form action="/yodogers" method="POST" class="needs-validation" novalidate>
       <div class="mb-3">
         <label class="form-label" for="title">Title</label>
         <input
@@ -11,7 +11,9 @@
           type="text"
           id="title"
           name="yodoger[title]"
+          required
         />
+        <div class="valid-feedback">Looks good</div>
       </div>
       <div class="mb-3">
         <label class="form-label" for="location">Location</label>
@@ -20,7 +22,9 @@
           type="text"
           id="location"
           name="yodoger[location]"
+          required
         />
+        <div class="valid-feedback">Looks good</div>
       </div>
       <div class="mb-3">
         <label class="form-label" for="image">Image Url</label>
@@ -29,7 +33,9 @@
           type="text"
           id="image"
           name="yodoger[image]"
+          required
         />
+        <div class="valid-feedback">Looks good</div>
       </div>
       <div class="mb-3">
         <label class="form-label" for="price">Yodoger Price</label>
@@ -43,10 +49,11 @@
             aria-label="price"
             aria-describedby="price-label"
             name="yodoger[price]"
+            required
           />
+          <div class="valid-feedback">Looks good</div>
         </div>
       </div>
-
       <div class="mb-3">
         <label class="form-label" for="description">Description</label>
         <textarea
@@ -54,7 +61,9 @@
           type="text"
           id="description"
           name="yodoger[description]"
+          required
         ></textarea>
+        <div class="valid-feedback">Looks good</div>
       </div>
       <div class="mb-3">
         <button class="btn btn-success">Add Yodoger</button>
