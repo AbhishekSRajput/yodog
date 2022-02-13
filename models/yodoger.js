@@ -19,7 +19,7 @@ const YoDogersSchema = new Schema({
 
 YoDogersSchema.post("findOneAndDelete", async (doc) => {
   if (doc) {
-    await Review.remove({
+    await Review.deleteMany({
       _id: {
         $in: doc.reviews,
       },
